@@ -51,7 +51,6 @@ _Adjunto imagen:_
 
 ![02](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/5b6f778c-e799-4bd3-a45c-c99822d1e4f4)
 
-
 #################################################################################################
 
 ## Paso N°3: Busqueda con dirb.
@@ -89,7 +88,7 @@ _Adjunto imagen:_
 
 ![03](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/0adff950-b91c-4554-836f-d9313aefe3c6)
 
-## _Aca podemos ver 3 directorios, dos de ellos nos envia  a paginas que no funcionan y una la "index.html" que NO muestra nada pero si le damos a inspeccionar vemos un mensaje que dice: "De: Juan Para: Camilo, te he dejado un correo es importante"_
+_Aca podemos ver 3 directorios, dos de ellos nos envia  a paginas que no funcionan y una la "index.html" que NO muestra nada pero si le damos a inspeccionar vemos un mensaje que dice: "De: Juan Para: Camilo, te he dejado un correo es importante"_
 
 _Adjunto imagen:_ 
 
@@ -104,7 +103,7 @@ _#################################################################_
 -----------------------------------------------------------------------------------------
 ![07](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/e3b537f8-0bd7-460b-a5f2-4df80340db54)
 
-_como sabemos que tiene el "puerto 22" abierto que es el de ssh vamos a probar con el nombre de camilo y si no funciona probamos con el de juan._
+_Como sabemos que tiene el "puerto 22" abierto que es el de ssh vamos a probar con el nombre de camilo y si no funciona probamos con el de juan._
 
 ## Paso N°4: Ataque de Fuerza Bruta con Hydra.
 
@@ -138,7 +137,7 @@ _una vez estamos dentro comprobamos con un "whoami" y vemos que nos muestra el n
 
 ## Paso N°6: Uso de la herramienta Linpeas.
 
-" En éste caso voy a usar linpeas para ver si encuentra algo más, asi que voy a pasarlo a la maquina victima por ssh usando el usuario "camilo" y lo hago de la siguiente manera:_
+_En éste caso voy a usar "linpeas" para ver si encuentra algo más, asi que voy a pasarlo a la maquina victima por ssh usando el usuario "camilo" y lo hago de la siguiente manera:_
 
 ```bash
 scp linpeas.sh camilo@172.17.0.2:/tmp/
@@ -158,8 +157,7 @@ _Adjunto imagen:_
 
 ![23](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/85054383-814c-4e22-9354-9319f9243627)
 
-
- _Pasamos a buscar algun archivo relacionado con el mensaje de juan y el correo que le mando a camilo y encontramos lo que buscabamos! podemos ver una ruta que dice:" /var/mail/camilo/correo.txt", asi que vamos a buscar en la primer ruta._
+ _Pasamos a buscar algun archivo relacionado con el mensaje de juan y el correo que le mando a camilo y encontramos lo que buscabamos! podemos ver una ruta que dice:" /var/mail/camilo/correo.txt y la otra /var/spool/mail/camilo/correo", asi que vamos a buscar en la primer ruta._
  
 _Adjunto imagen:_  
  
@@ -167,8 +165,13 @@ _Adjunto imagen:_
 
 ## Paso N°7: Buscamos informacion en la ruta encontrada.
 
-_Ponemos : "cat /var/mail/camilo/correo.txt" y podemos ver el mensaje que le envio juan a camilo y dice lo siguiente : "Me voy de vacaciones y no he terminado el trabajo que me dio el jefe. Por si acaso lo pide, aqui tienes la contraseña: 2k84dicb."_
+_Ponemos: "cat /var/mail/camilo/correo.txt" y podemos ver el mensaje que le envio juan a camilo y dice lo siguiente : "Hola Camilo, me voy de vacaciones y no he terminado el trabajo que me dio el jefe. Por si acaso lo pide, aqui tienes la contraseña: 2k84dicb."_
 
+```bash
+cat /var/mail/camilo/correo.txt
+Hola Camilo,
+Me voy de vacaciones y no he terminado el trabajo que me dio el jefe. Por si acaso lo pide, aqui tienes la contraseña: 2k84dicb.
+```
 _Adjunto imagen:_ 
 
 ![19](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/4e4513c8-556b-4d1f-9434-b8c0eafd0f85)
