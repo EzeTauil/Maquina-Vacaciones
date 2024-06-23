@@ -89,7 +89,8 @@ _Adjunto imagen:_
 
 ![03](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/0adff950-b91c-4554-836f-d9313aefe3c6)
 
-## _Aca podemos ver 3 directorios, dos de ellos nos envia  a paginas que no funcionan y una la "index.html" que no muestra nada pero si le damos a inspeccionar vemos un mensaje que dice: "De: Juan Para: Camilo, te he dejado un correo es importante"_
+## _Aca podemos ver 3 directorios, dos de ellos nos envia  a paginas que no funcionan y una la "index.html" que NO muestra nada pero si le damos a inspeccionar vemos un mensaje que dice: "De: Juan Para: Camilo, te he dejado un correo es importante"_
+
 _Adjunto imagen:_ 
 
 ![05](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/6ea184f0-a4cc-41b8-b071-366cac35a497)
@@ -107,11 +108,102 @@ _como sabemos que tiene el "puerto 22" abierto que es el de ssh vamos a probar c
 
 ## Paso N°4: Ataque de Fuerza Bruta con Hydra.
 
-_Asi que ahora procedemos a usar hydra de la siguiente manera:
+_Asi que ahora procedemos a usar hydra de la siguiente manera:_ 
 
 ```bash
 hydra  -l camilo -P /usr/share/wordlists/rockyou.txt -t4 -vV 172.17.0.2 ssh
 ```
+_Adjunto imagen:_
+
+![11](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/d86dc60b-e2dd-4a05-a60c-8211afe393aa)
+
+_#################################################################_
+-----------------------------------------------------------------------------------------
+![12](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/06ecceee-10b7-4f7e-ab41-f0a3309575ab)
+
+_Encontramos la contraseña de camilo que es "password1" , asi que procedemos a la conexion por ssh._
+
+## Paso N°5: Conexion por SSH.
+
+_Ponemos el siguiente comando:_
+
+```bash
+ssh camilo@172.17.0.2
+```
+_Adjunto imagen:_ 
+
+![13](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/f0a35458-b2a0-4fd2-84f5-50f224815517)
+
+_una vez estamos dentro comprobamos con un "whoami" y vemos que nos muestra el nombre "camilo", realizamos algunas pruebas más ponemos "sudo -l" la salida que obtenemos es: "Sorry, user camilo may not run sudo on 8390902f87ea.
+
+## Paso N°6: Uso de la herramienta Linpeas.
+
+" En éste caso voy a usar linpeas para ver si encuentra algo más, asi que voy a pasarlo a la maquina victima por ssh usando el usuario "camilo" y lo hago de la siguiente manera:_
+
+```bash
+scp linpeas.sh camilo@172.17.0.2:/tmp/
+```
+_Adjunto imagen:_ 
+
+![17](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/cd67e050-67a6-45b5-8204-11d6acd467ae)
+
+
+_Ahora le damos permisos con "chmod +x /tmp/linpeas.sh" y lo ejecutamos:_ 
+
+```bash
+chmod +x /tmp/linpeas.sh
+/tmp/linpeas.sh
+```
+_Adjunto imagen:_ 
+
+![23](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/85054383-814c-4e22-9354-9319f9243627)
+
+
+ _Pasamos a buscar algun archivo relacionado con el mensaje de juan y el correo que le mando a camilo y encontramos lo que buscabamos! podemos ver una ruta que dice:" /var/mail/camilo/correo.txt", asi que vamos a buscar en la primer ruta._
+ 
+_Adjunto imagen:_  
+ 
+![18](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/0cb01e39-5590-4fb2-b631-61ca94fbff20)
+
+## Paso N°7: Buscamos informacion en la ruta encontrada.
+
+_Ponemos : "cat /var/mail/camilo/correo.txt" y podemos ver el mensaje que le envio juan a camilo y dice lo siguiente : "Me voy de vacaciones y no he terminado el trabajo que me dio el jefe. Por si acaso lo pide, aqui tienes la contraseña: 2k84dicb."_
+
+_Adjunto imagen:_ 
+
+![19](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/4e4513c8-556b-4d1f-9434-b8c0eafd0f85)
+
+_Ahora que tenemos una contraseña podemos suponer que se trata de la calve para conectarse por ssh con su usuario y ya que camilo no es usuario root vamos a ver si juan lo es o si podemos de alguna manera acceder como root con el usuario de juan._
+
+## Paso N°8: Nueva conexion por SSH con el usuario Juan y Escalada de Privilegios.
+
+_Pasamos a ver si nos podemos conectar por ssh con el usuario juan y usando la contraseña "2k84dicb" que dejo._
+
+```bash
+ssh juan@172.17.0.2
+password: 2k84dicb
+```
+_Adjunto imagen:_ 
+
+![20](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/d878d00a-25bd-4616-ae01-09b910d387c5)
+
+_Logramos tener acceso! hacemos un "whoami"_
+_Salida: juan_
+_ponemos "sudo -l "
+y vemos que nos dice user juan may run the following commands on8390902f87ea:
+(ALL) NOPASSWD: /usr/bin/ruby_
+
+_Adjunto imagen:_ 
+
+![24](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/61204189-229a-4e87-99f2-8e5f12016237)
+
+_Esto significa que el usuario juan puede ejecutar el comando /usr/bin/ruby con privilegios de root sin necesidad de proporcionar una contraseña._
+
+_Asi que si ponemos "sudo /usr/bin/ruby -e 'exec "/bin/bash' vamos a obtener una shell con privilegios root_
+
+_Adjunto imagen:_ 
+
+![22](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/9ad56062-387c-48ab-a357-c1d250159541)
 
 
 
