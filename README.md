@@ -93,11 +93,14 @@ _Adjunto imagen:_
 _Adjunto imagen:_ 
 
 ![05](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/6ea184f0-a4cc-41b8-b071-366cac35a497)
+
 _#################################################################_
 -----------------------------------------------------------------------------------------
 
 ![06](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/0c4c2b80-f609-4d4d-a030-a40b482cd97b)
-#################################################################################################
+
+_#################################################################_
+-----------------------------------------------------------------------------------------
 ![07](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/e3b537f8-0bd7-460b-a5f2-4df80340db54)
 
 _como sabemos que tiene el "puerto 22" abierto que es el de ssh vamos a probar con el nombre de camilo y si no funciona probamos con el de juan._
