@@ -133,7 +133,7 @@ _Adjunto imagen:_
 
 ![13](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/f0a35458-b2a0-4fd2-84f5-50f224815517)
 
-_una vez estamos dentro comprobamos con un "whoami" y vemos que nos muestra el nombre "camilo", realizamos algunas pruebas más ponemos "sudo -l" la salida que obtenemos es: "Sorry, user camilo may not run sudo on 8390902f87ea.
+_Una vez estamos dentro comprobamos con un "whoami" y vemos que nos muestra el nombre "camilo", realizamos algunas pruebas más ponemos "sudo -l" la salida que obtenemos es: "Sorry, user camilo may not run sudo on 8390902f87ea._
 
 ## Paso N°6: Uso de la herramienta Linpeas.
 
@@ -207,6 +207,7 @@ _Asi que si ponemos "sudo /usr/bin/ruby -e 'exec "/bin/bash' vamos a obtener una
 _Adjunto imagen:_ 
 
 ![22](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/9ad56062-387c-48ab-a357-c1d250159541)
+## ¡Finalmente conseguimos el acceso "ROOT"!
 
 
 
