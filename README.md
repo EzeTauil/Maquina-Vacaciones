@@ -49,7 +49,8 @@ nikto -h http://172.17.0.2
 ```
 _Adjunto imagen:_ 
 
-![02](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/6b32f19d-993f-45cb-960d-ff4fb3e137f9)
+![02](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/5b6f778c-e799-4bd3-a45c-c99822d1e4f4)
+
 
 #################################################################################################
 
@@ -88,16 +89,16 @@ _Adjunto imagen:_
 
 ![03](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/0adff950-b91c-4554-836f-d9313aefe3c6)
 
-## _Aca podemos ver 3 directorios, dos de ellos nos envia  a paginas que no funcionan y una la "index.html" que no muestra nada pero si le damos a inspeccionar vemos un mensaje que dice: "De: Juan Para: Camilo, te he dejado un correo es importante"
+## _Aca podemos ver 3 directorios, dos de ellos nos envia  a paginas que no funcionan y una la "index.html" que no muestra nada pero si le damos a inspeccionar vemos un mensaje que dice: "De: Juan Para: Camilo, te he dejado un correo es importante"_
 _Adjunto imagen:_ 
 
 ![05](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/6ea184f0-a4cc-41b8-b071-366cac35a497)
+#################################################################################################
 ![06](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/0c4c2b80-f609-4d4d-a030-a40b482cd97b)
+#################################################################################################
 ![07](https://github.com/EzeTauil/Maquina-Vacaciones/assets/118028611/e3b537f8-0bd7-460b-a5f2-4df80340db54)
 
-
-
-como sabemos que tiene el "puerto 22" abierto que es el de ssh vamos a probar con el nombre de camilo y si no funciona probamos con el de juan.
+_como sabemos que tiene el "puerto 22" abierto que es el de ssh vamos a probar con el nombre de camilo y si no funciona probamos con el de juan._
 
 ## Paso N°4: Ataque de Fuerza Bruta con Hydra.
 
